@@ -221,3 +221,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Assignment reference files
+G028_MP272.zip
+G028_MP272/
