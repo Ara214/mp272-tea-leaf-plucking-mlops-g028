@@ -1,0 +1,66 @@
+# MP272 findings --- fill in every value, keep every key.
+# The marking tool reads this file. Write null only where the comment says so.
+# Use the exact column names and group values from your data files.
+
+group_id: "G028"          # your group id, e.g. "G042"
+problem_id: "MP272"
+
+data_issues:
+  leaking_column:
+    present: false
+    column: null
+
+  unit_mixup:
+    present: true
+    column: hours_worked
+    group_value: Upper Garden
+    factor: 60
+
+  sentinel_value:
+    present: true
+    column: worker_exp_yr
+    value: 9999
+    count: 50
+
+  duplicate_rows:
+    present: false
+    count: 0
+
+  stuck_sensor:
+    present: true
+    column: rain_mm_week
+    start_date: 2026-03-25
+    end_date: 2026-04-15
+
+  target_typos:
+    present: false
+    count: 0
+
+  spelling_variants:
+    present: false
+    column: null
+    true_levels: null
+
+tracking:
+  experiment_name: null
+  best_run_id: null        # the MLflow run id of your v1 model
+  registered_model_name: null
+  champion_version: null
+
+monitoring:
+  psi:                     # cleaned train.csv vs later.csv, 10 bins
+    worker_exp_yr: null
+    rain_mm_week: null
+    slope_deg: null
+    temp_c: null
+    bush_age_yr: null
+    hours_worked: null
+  most_drifted_feature: null
+  mae_by_group:            # v1 on later.csv, per value of section
+    'Upper Garden': null
+    'Lower Garden': null
+    'River Side': null
+  worst_served_group: null
+  mae_v1_on_check: null    # v1 on the last 30% of later.csv (by date)
+  mae_v2_on_check: null    # v2 on the same rows
+  decision: null           # promote or keep
