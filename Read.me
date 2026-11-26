@@ -1,25 +1,18 @@
-"""The two input CSVs must be outputs of the Stage 2 cleaning pipeline. The v1
-MLflow model is loaded as a scikit-learn pipeline, so its feature
-preprocessing is reused when fitting v2.
+   """Format only approved operational fields as one JSON object per line.
 
-Example (from the repository root)::
-
-    PYTHONPATH=src python -m mp272.retrain \\
-      --clean-train data/processed/train.csv \\
-      --clean-later data/processed/later.csv \\
-      --original-train data/raw/train.csv
-"""
-
-    """Return the first 70% and final 30% of rows after stable date sorting."""
-
-    """Find the model version created by this run (MLflow 2/3 compatible)."""
-
-    """Train v2, compare v1/v2 on the same chronological holdout, and promote.
-
-    v2 is always registered. The ``champion`` alias changes only when v2's
-    MAE is at least 8% lower than v1's on the last 30% of ``later.csv``.
+    Arbitrary log messages, request bodies, exception messages, and other
+    ``LogRecord`` attributes are deliberately omitted to prevent accidental
+    logging of customer or worker details.
     """
+        """Configure a stdout-only logger with the MP272 JSON formatter."""
+  """Write one safe JSON line for a completed or failed prediction.
 
-                "Stage 4 needs mlflow and scikit-learn installed in the project environment"
+    Do not pass request data here. For failures, only the exception class is
+    included; exception text can contain sensitive values and is excluded.
+    """
+      """Attach middleware that emits one safe line for each ``POST /predict``.
 
-
+    Call once during FastAPI app setup. It records successful responses,
+    validation failures, and raised exceptions without reading or logging the
+    request body. Health checks and other routes are not logged here.
+    """
