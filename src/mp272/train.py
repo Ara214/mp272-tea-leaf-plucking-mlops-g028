@@ -98,10 +98,12 @@ def clean(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
 
     # 1. Unit mix-up: Upper Garden logged hours_worked in minutes.
+    #    Only convert when the values really are minutes (nobody works a
+    #    >24 h shift), so files without the mix-up are left untouched.
     mask = df[UNIT_MIXUP["group_col"]] == UNIT_MIXUP["group_value"]
-    df.loc[mask, UNIT_MIXUP["column"]] = (
-        df.loc[mask, UNIT_MIXUP["column"]] / UNIT_MIXUP["factor"]
-    )
+    col = UNIT_MIXUP["column"]
+    if mask.any() and df.loc[mask, col].median() > 24:
+        df.loc[mask, col] = df.loc[mask, col] / UNIT_MIXUP["factor"]
 
     # 2. Sentinel value -> missing (imputed later inside the pipeline).
     df[SENTINEL["column"]] = df[SENTINEL["column"]].replace(
