@@ -1,0 +1,13 @@
+{
+  "model": "LinearRegression",
+  "target": "kg_per_worker",
+  "features": "worker_exp_yr,rain_mm_week,slope_deg,temp_c,bush_age_yr,hours_worked,section",
+  "split": "random",
+  "valid_size": 0.2,
+  "random_state": 42,
+  "mae_valid": 2.3472652197863693,
+  "mae_valid_mean_baseline": 6.6421937500000015,
+  "n_train": 800,
+  "n_valid": 200,
+  "mlflow_run_id": "15530090712a4a04b137ea4aa949ceb6"
+}
