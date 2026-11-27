@@ -20,7 +20,7 @@ MODEL_PATH = ROOT / "models" / "model_v1.joblib"
 app = FastAPI(title="MP272 Tea Leaf Plucking API")
 logger = get_logger("mp272.api")
 
-MODEL_VERSION = "v1"
+MODEL_VERSION = "v2"
 model = joblib.load(MODEL_PATH)
 
 
