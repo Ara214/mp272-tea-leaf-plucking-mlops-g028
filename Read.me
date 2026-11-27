@@ -1,0 +1,18 @@
+   """Format only approved operational fields as one JSON object per line.
+
+    Arbitrary log messages, request bodies, exception messages, and other
+    ``LogRecord`` attributes are deliberately omitted to prevent accidental
+    logging of customer or worker details.
+    """
+        """Configure a stdout-only logger with the MP272 JSON formatter."""
+  """Write one safe JSON line for a completed or failed prediction.
+
+    Do not pass request data here. For failures, only the exception class is
+    included; exception text can contain sensitive values and is excluded.
+    """
+      """Attach middleware that emits one safe line for each ``POST /predict``.
+
+    Call once during FastAPI app setup. It records successful responses,
+    validation failures, and raised exceptions without reading or logging the
+    request body. Health checks and other routes are not logged here.
+    """

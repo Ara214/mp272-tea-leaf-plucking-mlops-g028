@@ -224,3 +224,17 @@ __marimo__/
 # Assignment reference files
 G028_MP272.zip
 G028_MP272/
+
+# MLflow local tracking
+
+
+# Python temporary files
+__pycache__/
+*.py[cod]
+
+# Local testing files
+artifact_test.py
+test_tracking.py
+train.txt
+
+/mlruns/

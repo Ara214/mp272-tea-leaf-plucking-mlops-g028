@@ -1,0 +1,13 @@
+data:
+  train_path: data/raw/train.csv
+  later_path: data/raw/later.csv
+  holdout_path: data/raw/holdout_features.csv
+
+model:
+  random_state: 42
+  validation_size: 0.20
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  experiment_name: MP272_Tea_Leaf_Plucking
+  registered_model_name: MP272_TeaLeaf_Model_Final
