@@ -15,7 +15,7 @@ from src.mp272.logging_config import (
 from src.mp272.train import clean
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL_PATH = ROOT / "models" / "model_v1.joblib"
+MODEL_PATH = ROOT / "models" / "model.joblib"
 
 app = FastAPI(title="MP272 Tea Leaf Plucking API")
 logger = get_logger("mp272.api")
