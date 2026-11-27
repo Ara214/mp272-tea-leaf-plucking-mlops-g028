@@ -1,8 +1,9 @@
+
 # MP272 findings --- fill in every value, keep every key.
 # The marking tool reads this file. Write null only where the comment says so.
 # Use the exact column names and group values from your data files.
 
-group_id: "G028"          # your group id, e.g. "G042"
+group_id: "G028"
 problem_id: "MP272"
 
 data_issues:
@@ -42,25 +43,27 @@ data_issues:
     true_levels: null
 
 tracking:
-  experiment_name: null
-  best_run_id: null        # the MLflow run id of your v1 model
-  registered_model_name: null
-  champion_version: null
+  experiment_name: MP272_Tea_Leaf_Plucking
+  best_run_id: a7cc9c521ca3439b8ed8f62e2a83a892
+  registered_model_name: MP272_TeaLeaf_Model_Final
+  champion_version: 2
 
 monitoring:
-  psi:                     # cleaned train.csv vs later.csv, 10 bins
-    worker_exp_yr: null
-    rain_mm_week: null
-    slope_deg: null
-    temp_c: null
-    bush_age_yr: null
-    hours_worked: null
-  most_drifted_feature: null
-  mae_by_group:            # v1 on later.csv, per value of section
-    'Upper Garden': null
-    'Lower Garden': null
-    'River Side': null
-  worst_served_group: null
-  mae_v1_on_check: null    # v1 on the last 30% of later.csv (by date)
-  mae_v2_on_check: null    # v2 on the same rows
-  decision: null           # promote or keep
+  psi:
+    worker_exp_yr: 0.359880
+    rain_mm_week: 0.948524
+    slope_deg: 0.043599
+    temp_c: 0.031420
+    bush_age_yr: 4.765812
+    hours_worked: 1.360041
+  most_drifted_feature: bush_age_yr
+
+mae_by_group:
+  'Upper Garden': 7.587616
+  'Lower Garden': 3.120506
+  'River Side': 5.898310
+
+worst_served_group: 'Upper Garden'
+mae_v1_on_check: 6.765772
+mae_v2_on_check: 4.648360
+decision: promote
