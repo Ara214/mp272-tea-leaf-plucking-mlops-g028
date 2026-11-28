@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mp272-api
-          image: mp272-mlops-api:latest
+          image: mp272-tea-leaf:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
